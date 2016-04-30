@@ -1,5 +1,6 @@
 /.bundle
 
+.env
 /notes
 
 # Ignore all logfiles and tempfiles.
