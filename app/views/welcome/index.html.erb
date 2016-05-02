@@ -1,1 +1,5 @@
-<h1>Hello</h1>
+<%= simple_form_for UserLead.new do |f| %>
+  <%= f.input :travel_location, required: 'required' %>
+  <%= f.input :user_email, required: 'required' %>
+  <%= f.button :submit, 'Submit' %>
+<% end %>

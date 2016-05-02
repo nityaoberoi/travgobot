@@ -7,12 +7,14 @@ source 'https://rubygems.org' do
 
   # Application
   gem 'rails', '4.2.6' # duh
+  gem 'simple_form' # provides syntactic sugar for forms
+  gem 'geocoder'
 
   # Assets
   gem 'uglifier' # Compressor for JavaScript assets
   gem 'sass-rails' # Use SCSS for stylesheets
   gem 'jquery-rails' # jquery as the JavaScript library
-
+  gem 'react-rails', '~> 1.7.0'
   # See https://github.com/rails/execjs#readme for more supported runtimes
   # gem 'therubyracer', platforms: :ruby
 
