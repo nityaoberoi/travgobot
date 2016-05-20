@@ -1,0 +1,45 @@
+div id='map'
+div id='login-form'
+  = simple_form_for UserLead.new do |f|
+    .form-group
+      = f.label 'Take me places'
+      = f.input_field :travel_location, required: 'required', class: 'form-control'
+
+    .form-group
+      = f.label 'Dates'
+      .form-group
+        .form-inline
+          = f.datetime_field :start_date, class: 'form-control'
+          = f.datetime_field :end_date, class: 'form-control'
+
+    .form-group
+      = f.label 'Email'
+      = f.email_field :user_email, required: 'required', class: 'form-control'
+
+    = f.button :submit, 'Submit', class: 'btn btn-pink'
+
+  javascript:
+    L.mapbox.accessToken = 'pk.eyJ1Ijoibml0eWFvYmVyb2kiLCJhIjoiY2lubWV2ZDhzMHpqZ3R0bTNuYjRkbzZtbiJ9.N7xvOGpbApLCQS1CbGBLyA';
+
+    mapboxgl.accessToken = 'pk.eyJ1Ijoibml0eWFvYmVyb2kiLCJhIjoiY2lubWV2ZDhzMHpqZ3R0bTNuYjRkbzZtbiJ9.N7xvOGpbApLCQS1CbGBLyA';
+
+    var geocoder = L.mapbox.geocoder('mapbox.places'),
+      map = new mapboxgl.Map({
+        container: 'map', // container id
+        style: 'mapbox://styles/mapbox/light-v9', //hosted style id
+        center: [-77.38, 39], // starting position
+        zoom: 3 // starting zoom
+      });
+
+    geocoder.query('Chester, NJ', showMap);
+
+    function showMap(err, data) {
+      // The geocoder can return an area, like a city, or a
+      // point, like an address. Here we handle both cases,
+      // by fitting the map bounds to an area or zooming to a point.
+      if (data.lbounds) {
+          map.fitBounds(data.lbounds);
+      } else if (data.latlng) {
+          map.setView([data.latlng[0], data.latlng[1]], 13);
+      }
+    }

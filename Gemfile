@@ -11,6 +11,7 @@ source 'https://rubygems.org' do
   gem 'geocoder'
 
   # Assets
+  gem 'slim-rails' # allows us to use the slim syntax for views
   gem 'uglifier' # Compressor for JavaScript assets
   gem 'sass-rails' # Use SCSS for stylesheets
   gem 'jquery-rails' # jquery as the JavaScript library
